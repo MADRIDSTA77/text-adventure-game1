@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Adventure Game</title>
+</head>
+<body>
+
+<h1>Text Adventure Game</h1>
+<p id="story">HI</p>
+
+<input type="text" id="userInput" placeholder="Your choice here...">
+<button onclick="playGame()">Submit</button>
+
+<script>
+    let storyText = document.getElementById("story");
+    let userInput = document.getElementById("userInput");
+    let step = 1;
+
+    function playGame() {
+        let choice = userInput.value.toUpperCase();
+
+        if (step === 1) {
+            if (choice === "LEFT") {
+                storyText.textContent = "YOU CAME ACROSS A RIVER. TYPE SWIM TO SWIM OR BOAT TO WAIT FOR A BOAT:";
+                step = 2;
+            } else if (choice === "RIGHT") {
+                storyText.textContent = "YOU TOOK THE RIGHT PATH. YOU SEE A DARK CAVE AND A STEEP HILL. TYPE C TO ENTER THE CAVE OR H TO CLIMB THE HILL:";
+                step = 8;
+            } else {
+                storyText.textContent = "Invalid choice. Please type LEFT or RIGHT.";
+            }
+        } else if (step === 2) {
+            if (choice === "BOAT") {
+                storyText.textContent = "YOU REACH THE ISLAND UNHARMED. THERE'S A PATH TO A FOREST AND ANOTHER TO A GRAVEYARD. TYPE FOREST TO GO THERE OR GRAVEYARD TO GO THERE:";
+                step = 3;
+            } else if (choice === "SWIM") {
+                storyText.textContent = "YOU STRUGGLE IN THE WATER. TYPE F TO FIGHT THE CURRENT OR S TO SURRENDER:";
+                step = 7;
+            } else {
+                storyText.textContent = "Invalid choice. Please type SWIM or BOAT.";
+            }
+        } else if (step === 3) {
+            if (choice === "FOREST") {
+                storyText.textContent = "YOU REACHED A DEN. TYPE F TO FIGHT WITH THE LION OR G TO GO AROUND:";
+                step = 4;
+            } else if (choice === "GRAVEYARD") {
+                storyText.textContent = "YOU HEAR STRANGE NOISES. TYPE R TO RUN OR H TO HIDE:";
+                step = 5;
+            } else {
+                storyText.textContent = "Invalid choice. Please type FOREST or GRAVEYARD.";
+            }
+        } else if (step === 4) {
+            if (choice === "G") {
+                storyText.textContent = "YOU SEE TWO COTTAGES IN FRONT OF YOU. TYPE B TO GO TO THE BLUE HOUSE OR R TO GO TO THE RED HOUSE:";
+                step = 6;
+            } else if (choice === "F") {
+                storyText.textContent = "THE LION DEFEATED YOU. GAME OVER!";
+                step = 1;
+            } else {
+                storyText.textContent = "Invalid choice. Please type F or G.";
+            }
+        } else if (step === 5) {
+            if (choice === "H") {
+                storyText.textContent = "YOU WERE CAUGHT BY GHOSTS. GAME OVER!";
+                step = 1;
+            } else if (choice === "R") {
+                storyText.textContent = "YOU SEE A LIGHT AHEAD. TYPE T TO TRUST IT OR A TO AVOID IT:";
+                step = 6;
+            } else {
+                storyText.textContent = "Invalid choice. Please type R or H.";
+            }
+        } else if (step === 6) {
+            if (choice === "R") {
+                storyText.textContent = "CONGRATULATIONS! YOU FOUND TREASURE!";
+                step = 1;
+            } else if (choice === "B") {
+                storyText.textContent = "THE BLUE HOUSE WAS HAUNTED. GAME OVER!";
+                step = 1;
+            } else if (choice === "T") {
+                storyText.textContent = "IT WAS A TRAP! GAME OVER!";
+                step = 1;
+            } else if (choice === "A") {
+                storyText.textContent = "YOU ESCAPED SAFELY! WELL DONE!";
+                step = 1;
+            } else {
+                storyText.textContent = "Invalid choice.";
+            }
+        } else if (step === 7) {
+            if (choice === "F") {
+                storyText.textContent = "YOU SWIM TO SAFETY ON A SMALL ISLAND. CONGRATULATIONS!";
+                step = 1;
+            } else if (choice === "S") {
+                storyText.textContent = "YOU WERE SWEPT AWAY. GAME OVER!";
+                step = 1;
+            } else {
+                storyText.textContent = "Invalid choice.";
+            }
+        } else if (step === 8) {
+            if (choice === "C") {
+                storyText.textContent = "THE CAVE IS FILLED WITH BATS. TYPE R TO RUN OUT OR D TO DUCK AND HIDE:";
+                step = 9;
+            } else if (choice === "H") {
+                storyText.textContent = "YOU REACH THE TOP, BUT THERE'S A SNAKE. TYPE S TO STAY STILL OR F TO FLEE:";
+                step = 10;
+            } else {
+                storyText.textContent = "Invalid choice.";
+            }
+        } else if (step === 9) {
+            if (choice === "D") {
+                storyText.textContent = "THE BATS FLY PAST YOU AND YOU FIND A HIDDEN TREASURE. CONGRATULATIONS!";
+                step = 1;
+            } else if (choice === "R") {
+                storyText.textContent = "YOU WERE ATTACKED BY BATS. GAME OVER!";
+                step = 1;
+            } else {
+                storyText.textContent = "Invalid choice.";
+            }
+        } else if (step === 10) {
+            if (choice === "S") {
+                storyText.textContent = "THE SNAKE SLITHERS AWAY. YOU FIND A SECRET PATH AND ESCAPE SAFELY. WELL DONE!";
+                step = 1;
+            } else if (choice === "F") {
+                storyText.textContent = "YOU TRIPPED WHILE RUNNING. GAME OVER!";
+                step = 1;
+            } else {
+                storyText.textContent = "Invalid choice.";
+            }
+        }
+        userInput.value = "";
+    }
+</script>
+
+</body>
+</html>
